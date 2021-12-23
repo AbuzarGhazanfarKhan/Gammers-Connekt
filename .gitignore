@@ -1,0 +1,120 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import {
+  faAngleDoubleRight,
+  faHome,
+  faShoppingCart,
+  faUsers,
+  faAddressBook,
+  faSignInAlt,
+} from "@fortawesome/free-solid-svg-icons";
+
+
+
+
+
+
+ <a href="#" className="nav-links">
+              <span className="nav-text"> Gamers Connekt</span>
+              {/* <i class="fas fa-angle-double-right"></i> */}
+              <FontAwesomeIcon
+                className="icon"
+                icon={faAngleDoubleRight}
+              ></FontAwesomeIcon>
+            </a>
+
+<a href="#" className="nav-links">
+              {/* <i class="fas fa-home"></i> */}
+              <FontAwesomeIcon className="icon" icon={faHome}></FontAwesomeIcon>
+              <span className="nav-text"> Home </span>
+            </a>
+
+   <a href="#" className="nav-links">
+              {/* <i class="fas fa-store"></i> */}
+              <FontAwesomeIcon
+                className="icon"
+                icon={faShoppingCart}
+              ></FontAwesomeIcon>
+              <span className="nav-text"> Cart </span>
+            </a>
+
+<a href="#" className="nav-links">
+              {/* <i class="fas fa-users"></i> */}
+              <FontAwesomeIcon
+                className="icon"
+                icon={faUsers}
+              ></FontAwesomeIcon>
+              <span className="nav-text"> About </span>
+            </a>
+
+ <a href="#" className="nav-links">
+              {/* <i class="fas fa-address-book"></i> */}
+              <FontAwesomeIcon
+                className="icon"
+                icon={faAddressBook}
+              ></FontAwesomeIcon>
+              <span className="nav-text"> Contact </span>
+            </a>
+
+
+
+
+            lalala@gmail.com
+            12345678@ab
+
+
+
+              useEffect(() => {
+    fetch(
+      `http://game-distribution-web.herokuapp.com/get-games-filter-public?category=${category}`
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setProduct(data);
+      });
+  });
