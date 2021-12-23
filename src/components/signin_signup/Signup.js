@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 // import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
 // import Cookies from "js-cookie";
@@ -14,7 +14,7 @@ function Signup() {
     password: "",
   });
   // const [record, setRecord] = useState([]);
-
+  const navigate = useNavigate();
   const handleOnChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -51,6 +51,11 @@ function Signup() {
       // bake_cookie(cookie_key, `${fetchUser.token}`);
       // read_cookie(cookie_key);
       // delete_cookie(cookie_key);
+      const handleRedirect = () => {
+        window.location.reload();
+        fetchUser.token && navigate("/");
+      };
+      handleRedirect();
     }
     newRegistration();
 
@@ -96,7 +101,7 @@ function Signup() {
           />
           <label htmlFor="password">password</label>
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             autoComplete="off"

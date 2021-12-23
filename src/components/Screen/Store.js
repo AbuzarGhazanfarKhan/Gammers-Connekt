@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import useFetch from "../customHooks/useFetch";
 import { useNavigate } from "react-router-dom";
 
@@ -10,12 +10,20 @@ function Store() {
   );
   // const image = decode(data.images.data[0])
   const navigate = useNavigate();
+  const [seacrh, setSearch] = useState("");
 
   return (
     <div>
       <div className="search">
         <h1>Search</h1>
-        <input type="search" name="search" id="seacrh" />
+        <input
+          type="search"
+          name="search"
+          id="seacrh"
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
         <button>Search</button>
       </div>
 
@@ -23,7 +31,7 @@ function Store() {
       {isPending && (
         <div>
           {" "}
-          <h1>Loading.....</h1>{" "}
+          <h1 className="loading">Loading.....</h1>{" "}
         </div>
       )}
 

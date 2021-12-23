@@ -76,13 +76,10 @@ function ProductListing() {
       {isPending && (
         <div>
           {" "}
-          <br />
-          <br />
-          <br />
-          <h1>Loading.....</h1>{" "}
+          <h1 className="loading">Loading.....</h1>{" "}
         </div>
       )}
-      {product && <Products product={product} />}
+      {product && <Products product={product} key={product._id} />}
     </div>
   );
 }

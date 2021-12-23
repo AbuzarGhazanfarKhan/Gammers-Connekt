@@ -7,6 +7,9 @@ import HomeScreen from "./components/Screen/HomeScreen";
 import ProductDetails from "./components/Screen/ProductDetails";
 import AdminPanel from "./components/admin/AdminPanel";
 import Store from "./components/Screen/Store";
+// import Cookies from "js-cookie";
+// import Profile from "./components/Screen/Profile";
+import ProtectedRoutes from "./components/customHooks/ProtectedRoutes";
 
 function App() {
   return (
@@ -16,8 +19,11 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="store" element={<Store />} />
-          <Route path="sign_in" element={<Signin />} />
-          <Route path="sign_up" element={<Signup />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="sign_in" element={<Signin />} />
+            <Route path="sign_up" element={<Signup />} />
+          </Route>
+
           <Route path="/product/:gamename" element={<ProductDetails />} />
           <Route path="admin" element={<AdminPanel />} />
         </Routes>

@@ -37,6 +37,7 @@ body {
   background-color: #744ae826;
   background-image: linear-gradient(27deg, #662c88 0%, #0e2c52 94%);
   z-index: 21;
+  top: 0;
   transition: all 0.5s ease;
   border-bottom-right-radius: 2.5rem;
   border-top-right-radius: 2.5rem;
@@ -183,6 +184,7 @@ footer {
   text-align: center;
   border: 2px solid rgb(138, 111, 138);
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+  min-height: 30rem;
   transition: 0.5s all ease;
 }
 .product_listing .box:hover {

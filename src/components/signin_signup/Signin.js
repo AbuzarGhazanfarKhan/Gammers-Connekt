@@ -47,6 +47,7 @@ function Signin() {
       Cookies.get("token");
       const handleRedirect = () => {
         fetchUser.token && navigate("/");
+        window.location.reload();
       };
       handleRedirect();
     }

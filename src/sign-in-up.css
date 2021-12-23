@@ -34,8 +34,13 @@ form label {
   font-size: 1.3em;
   color: rgb(238, 228, 238);
 }
-h1 {
+.container h1,
+.container1 h1 {
   margin-block: 50px;
+  text-align: center;
+  color: rgb(138, 111, 138);
+}
+.loading {
   text-align: center;
   color: rgb(138, 111, 138);
 }

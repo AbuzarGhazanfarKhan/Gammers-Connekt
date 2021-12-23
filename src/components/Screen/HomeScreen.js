@@ -7,7 +7,6 @@ import ProductListing from "./ProductListing";
 function HomeScreen() {
   return (
     <div>
-      {/* {console.log(read_cookie())} */}
       <ProductListing />
     </div>
   );
