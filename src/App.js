@@ -25,7 +25,7 @@ function App() {
           </Route>
 
           <Route path="/product/:gamename" element={<ProductDetails />} />
-          <Route path="admin" element={<AdminPanel />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
         <Footer />
       </Router>
