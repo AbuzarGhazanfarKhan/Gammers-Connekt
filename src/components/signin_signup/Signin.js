@@ -26,7 +26,7 @@ function Signin() {
     sendData();
     async function sendData() {
       let fetchUser = await fetch(
-        "http://game-distribution-web.herokuapp.com/sign-in",
+        "https://game-distribution-web.herokuapp.com/sign-in",
         {
           method: "Post",
           headers: {

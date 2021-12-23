@@ -33,7 +33,7 @@ function Signup() {
       // console.log(user);
 
       let fetchUser = await fetch(
-        "http://game-distribution-web.herokuapp.com/sign-up",
+        "https://game-distribution-web.herokuapp.com/sign-up",
         {
           method: "Post",
           headers: {

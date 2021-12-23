@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function Store() {
   const { data, isPending, error } = useFetch(
-    `http://game-distribution-web.herokuapp.com/get-games-filter-public?limit=12`
+    `https://game-distribution-web.herokuapp.com/get-games-filter-public?limit=12`
   );
   // const image = decode(data.images.data[0])
   const navigate = useNavigate();

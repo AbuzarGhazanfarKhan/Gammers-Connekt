@@ -18,7 +18,7 @@ function ProductListing() {
     isPending,
     error,
   } = useFetch(
-    `http://game-distribution-web.herokuapp.com/get-games-filter-public?limit=6&category=${category}`
+    `https://game-distribution-web.herokuapp.com/get-games-filter-public?limit=6&category=${category}`
   );
 
   return (

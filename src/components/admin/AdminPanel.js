@@ -97,7 +97,7 @@ function AdminPanel() {
   };
   async function sendData() {
     let result = await fetch(
-      "http://game-distribution-web.herokuapp.com/add-games",
+      "https://game-distribution-web.herokuapp.com/add-games",
 
       {
         method: "Post",
