@@ -93,8 +93,6 @@ function Signup() {
         <center style={{ color: "green" }}>
           <p>{status}</p>
           <p>{verify}</p>
-          {setStatus([])}
-          {setVerify([])}
         </center>
       ) : null}
       <div className="container1">
