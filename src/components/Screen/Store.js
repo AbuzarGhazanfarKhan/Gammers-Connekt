@@ -38,6 +38,7 @@ function Store() {
 
       <div className="product_listing">
         {data
+          // eslint-disable-next-line
           .filter((value) => {
             if (seacrh === "") {
               return value;
