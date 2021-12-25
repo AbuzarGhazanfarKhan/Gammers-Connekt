@@ -12,25 +12,26 @@ function ChangePassword() {
       email: email.current.value,
     };
 
-    let fetchUser = await fetch(
-      "https://game-distribution-web.herokuapp.com/sign-in",
-      {
-        method: "Post",
-        headers: {
-          "content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(value),
-      }
-    );
+    sendData();
+    const sendData = async () => {
+      let fetchUser = await fetch(
+        "https://game-distribution-web.herokuapp.com/sign-in",
+        {
+          method: "Post",
+          headers: {
+            "content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(value),
+        }
+      );
 
-    fetchUser = await fetchUser.json();
-    {
-      fetchUser.status &&
-        setStatus(true) &&
-        alert(fetchUser.status) &&
-        navigate("/change_pass");
-    }
+      fetchUser = await fetchUser.json();
+      {
+        fetchUser.status && alert(fetchUser.status);
+        navigate("/sign_in");
+      }
+    };
   };
 
   return (
