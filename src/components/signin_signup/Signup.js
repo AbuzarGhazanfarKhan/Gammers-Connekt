@@ -15,6 +15,8 @@ function Signup() {
   });
   // const [record, setRecord] = useState([]);
   const [error, setError] = useState([]);
+  const [verify, setVerify] = useState([]);
+  const [status, setStatus] = useState([]);
   // const navigate = useNavigate();
   const handleOnChange = (e) => {
     const name = e.target.name;
@@ -51,11 +53,8 @@ function Signup() {
       }
 
       if (fetchUser.status && fetchUser.verify) {
-        <div style={{ color: "green" }}>
-          {" "}
-          {fetchUser.status} <br />
-          {fetchUser.verify}
-        </div>;
+        setStatus(fetchUser.status);
+        setVerify(fetchUser.verify);
       }
 
       // fetchUser.cookie("token", fetchUser.token);
@@ -80,7 +79,12 @@ function Signup() {
   };
   return (
     <div className="big_container">
-      {
+      {status && verify ? (
+        <center style={{ color: "green" }}>
+          <p>{status}</p>
+          <p>{verify}</p>
+        </center>
+      ) : (
         <center>
           <p style={{ color: "red" }}>
             {error.map((items) => (
@@ -88,7 +92,7 @@ function Signup() {
             ))}
           </p>
         </center>
-      }
+      )}
       <div className="container1">
         <h1>Sign up</h1>
         <form action="" id="signup" onSubmit={onSubmit}>
