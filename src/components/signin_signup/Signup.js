@@ -1,11 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-// import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
-// import Cookies from "js-cookie";
 
 function Signup() {
-  // const [cookies, setCookies] = useState(null);
   const [userRegistration, setUserRegistration] = useState({
     firstname: "",
     lastname: "",
@@ -13,11 +10,11 @@ function Signup() {
     confirm_pass: "",
     password: "",
   });
-  // const [record, setRecord] = useState([]);
+
   const [error, setError] = useState([]);
   const [verify, setVerify] = useState([]);
   const [status, setStatus] = useState([]);
-  // const navigate = useNavigate();
+
   const handleOnChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -28,14 +25,9 @@ function Signup() {
     const newUser = {
       ...userRegistration,
       redirect_url: "https://compassionate-agnesi-be9563.netlify.app/sign_in",
-      // id: Math.floor(Math.random() * 10000 +
     };
 
-    // setRecord([...record, newUser]);
     async function newRegistration() {
-      // let user = { name, email, password };
-      // console.log(user);
-
       let fetchUser = await fetch(
         "https://game-distribution-web.herokuapp.com/sign-up",
         {
@@ -56,16 +48,6 @@ function Signup() {
         setStatus(fetchUser.status);
         setVerify(fetchUser.verify);
       }
-
-      // fetchUser.cookie("token", fetchUser.token);
-      // const cookie_key = "token";
-      // bake_cookie(cookie_key, `${fetchUser.token}`);
-      // read_cookie(cookie_key);
-      // delete_cookie(cookie_key);
-      // const handleRedirect = () => {
-      //   navigate("/sign_in");
-      // };
-      // handleRedirect();
     }
     newRegistration();
 
@@ -157,12 +139,3 @@ function Signup() {
 }
 
 export default Signup;
-
-// {
-//   record.map((currentElement) => {
-//     currentElement.username
-//     currentElement.email
-//     currentElement.contact
-//     currentElement.password
-//   })
-// }
