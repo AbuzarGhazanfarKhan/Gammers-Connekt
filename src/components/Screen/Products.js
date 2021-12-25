@@ -15,7 +15,7 @@ function Products({ product }) {
             >
               <div className="box" key={games._id}>
                 <img
-                  src={`data:image/jpeg;base64,${games.images[0]}`}
+                  src={`data:image/jpeg;base64,${games.images}`}
                   alt={games.name}
                   key={games._id}
                 />
