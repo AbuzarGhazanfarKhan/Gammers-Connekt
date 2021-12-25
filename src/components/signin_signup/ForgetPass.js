@@ -1,9 +1,9 @@
 import React from "react";
 import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function ForgetPass() {
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
 
   const textInput = useRef(null);
   const handleClick = (e) => {
@@ -26,7 +26,7 @@ function ForgetPass() {
       fetchUser = await fetchUser.json();
 
       fetchUser.status && alert(fetchUser.status);
-      fetchUser.status && navigate("/change_pass");
+      //   fetchUser.status && navigate("/change_pass");
     };
     sendData();
   };
