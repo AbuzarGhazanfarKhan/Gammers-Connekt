@@ -3,12 +3,14 @@ import React, { useRef } from "react";
 function ChangePassword() {
   const password = useRef(null);
   const confirm_password = useRef(null);
+  const email = useRef(null);
 
   const handleClick = (e) => {
     e.preventDefault();
     const value = {
       password: password.current.value,
       confirm_password: confirm_password.current.value,
+      email: email.current.value,
     };
 
     const sendData = async () => {
@@ -45,7 +47,8 @@ function ChangePassword() {
             id="confirm_password"
             ref={confirm_password}
           />
-
+          <label htmlFor="email">Enter the Email used for Registration</label>
+          <input type="text" name="email" id="email" ref={email} />
           <button id="fpbutton" type="submit" onClick={handleClick}>
             Get New Password
           </button>
