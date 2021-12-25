@@ -10,7 +10,7 @@ function Store() {
   );
   // const image = decode(data.images.data[0])
   const navigate = useNavigate();
-  // const [seacrh, setSearch] = useState("");
+  const [seacrh, setSearch] = useState("");
 
   return (
     <div>
@@ -21,9 +21,9 @@ function Store() {
           name="search"
           id="seacrh"
           placeholder="Seacrh Here..."
-          // onChange={(e) => {
-          //   setSearch(e.target.value);
-          // }}
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
         />
         <button>Search</button>
       </div>
@@ -38,15 +38,15 @@ function Store() {
 
       <div className="product_listing">
         {data
-          // .filter((value) => {
-          //   if (seacrh === "") {
-          //     return value;
-          //   } else if (
-          //     value.name.toLowerCase().includes(seacrh.toLowerCase())
-          //   ) {
-          //     return value;
-          //   }
-          // })
+          .filter((value) => {
+            if (seacrh === "") {
+              return value;
+            } else if (
+              value.name.toLowerCase().includes(seacrh.toLowerCase())
+            ) {
+              return value;
+            }
+          })
           .map((games) => {
             return (
               <div
