@@ -79,12 +79,7 @@ function Signup() {
   };
   return (
     <div className="big_container">
-      {status && verify ? (
-        <center style={{ color: "green" }}>
-          <p>{status}</p>
-          <p>{verify}</p>
-        </center>
-      ) : (
+      {
         <center>
           <p style={{ color: "red" }}>
             {error.map((items) => (
@@ -92,7 +87,14 @@ function Signup() {
             ))}
           </p>
         </center>
-      )}
+      }
+
+      {status && verify ? (
+        <center style={{ color: "green" }}>
+          <p>{status}</p>
+          <p>{verify}</p>
+        </center>
+      ) : null}
       <div className="container1">
         <h1>Sign up</h1>
         <form action="" id="signup" onSubmit={onSubmit}>
