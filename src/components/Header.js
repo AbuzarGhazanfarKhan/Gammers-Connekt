@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Cookies from "js-cookie";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
+  const navigate = useNavigate();
   // const [getCoockies, setGetCoockies] = useState(null);
   // setGetCoockies(Cookies.get("token"));
   let cookies = Cookies.get("token");
@@ -18,6 +19,7 @@ function Header() {
     Cookies.remove("token");
     window.location.reload();
     window.alert("You are About to be Logged out");
+    navigate("/");
   };
 
   return (

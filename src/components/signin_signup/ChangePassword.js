@@ -15,7 +15,7 @@ function ChangePassword() {
 
     const sendData = async () => {
       let fetchUser = await fetch(
-        "https://game-distribution-web.herokuapp.com/sign-in",
+        "https://game-distribution-web.herokuapp.com/update",
         {
           method: "Post",
           headers: {

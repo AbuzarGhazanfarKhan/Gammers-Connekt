@@ -72,13 +72,11 @@ function Signin() {
     <>
       <div className="big_container">
         {
-          <center>
-            <div style={{ color: "red" }}>
-              {error.map((items) => (
-                <p key={error.indexOf(items)}>{items}</p>
-              ))}
-            </div>
-          </center>
+          <div style={{ color: "red" }}>
+            {error.map((items) => (
+              <p key={error.indexOf(items)}>{items}</p>
+            ))}
+          </div>
         }
         <div className="container">
           <h1>Login</h1>
