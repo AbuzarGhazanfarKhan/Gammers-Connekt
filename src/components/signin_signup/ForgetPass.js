@@ -7,7 +7,8 @@ function ForgetPass() {
   const navigate = useNavigate();
 
   const textInput = useRef(null);
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     const value = textInput.current.value;
 
     sendData();

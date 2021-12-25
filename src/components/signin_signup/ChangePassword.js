@@ -5,7 +5,8 @@ function ChangePassword() {
   const confirm_password = useRef(null);
   const email = useRef(null);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
     const value = {
       password: password.current.value,
       confirm_password: confirm_password.current.value,
