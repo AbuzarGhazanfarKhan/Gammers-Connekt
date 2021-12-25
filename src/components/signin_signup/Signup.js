@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 // import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
 // import Cookies from "js-cookie";
@@ -14,7 +14,7 @@ function Signup() {
     password: "",
   });
   // const [record, setRecord] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const handleOnChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -24,7 +24,8 @@ function Signup() {
     e.preventDefault();
     const newUser = {
       ...userRegistration,
-      // id: Math.floor(Math.random() * 10000 + 1),
+      redirectlink: "https://compassionate-agnesi-be9563.netlify.app/sign_in",
+      // id: Math.floor(Math.random() * 10000 +
     };
 
     // setRecord([...record, newUser]);
@@ -44,18 +45,19 @@ function Signup() {
         }
       );
       fetchUser = await fetchUser.json();
-      console.warn(fetchUser);
-      console.log(fetchUser.token);
+      if (fetchUser.error) {
+        alert(fetchUser.error);
+      }
+
       // fetchUser.cookie("token", fetchUser.token);
       // const cookie_key = "token";
       // bake_cookie(cookie_key, `${fetchUser.token}`);
       // read_cookie(cookie_key);
       // delete_cookie(cookie_key);
-      const handleRedirect = () => {
-        window.location.reload();
-        fetchUser.token && navigate("/");
-      };
-      handleRedirect();
+      // const handleRedirect = () => {
+      //   navigate("/sign_in");
+      // };
+      // handleRedirect();
     }
     newRegistration();
 

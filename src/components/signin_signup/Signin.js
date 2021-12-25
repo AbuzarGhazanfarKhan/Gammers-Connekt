@@ -20,6 +20,11 @@ function Signin() {
 
   const submitForm = (e) => {
     e.preventDefault();
+    if (email === "" && password === "") {
+      alert("Please enter email and password");
+    } else if (email === "" || password === "") {
+      alert("Email or Password is not filled ");
+    }
     const newEntry = { email: email, password: password };
 
     setAllActiveUser([...allActiveUser, newEntry]);
@@ -37,6 +42,9 @@ function Signin() {
         }
       );
       fetchUser = await fetchUser.json();
+      if (fetchUser.error) {
+        alert(fetchUser.error);
+      }
       // cookies.set("token", fetchUser);
       // setCookie({ fetchUser });
       // console.log(cookies);

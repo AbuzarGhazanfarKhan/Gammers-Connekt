@@ -20,6 +20,7 @@ function Store() {
           type="search"
           name="search"
           id="seacrh"
+          placeholder="Seacrh Here..."
           onChange={(e) => {
             setSearch(e.target.value);
           }}
@@ -36,24 +37,34 @@ function Store() {
       )}
 
       <div className="product_listing">
-        {data.map((games) => {
-          return (
-            <div
-              className="box"
-              key={games._id}
-              onClick={() => {
-                navigate(`/product/${games.name}`);
-              }}
-            >
-              <img
-                src={`data:image/jpeg;base64,${games.images[0]}`}
-                alt={games.name}
-                // `data:image/jpeg;base64,${games.images[0].data.toString()}`
-              />
-              {console.log(games.images)}
-              <h4>{games.name}</h4>
-              <h4>${games.cost}</h4>
-              {/* <Link to={`/product/${games.name}`}>
+        {data
+          .filter((value) => {
+            if (seacrh === "") {
+              return value;
+            } else if (
+              value.name.toLowerCase().includes(seacrh.toLowerCase())
+            ) {
+              return value;
+            }
+          })
+          .map((games) => {
+            return (
+              <div
+                className="box"
+                key={games._id}
+                onClick={() => {
+                  navigate(`/product/${games.name}`);
+                }}
+              >
+                <img
+                  src={`data:image/jpeg;base64,${games.images[0]}`}
+                  alt={games.name}
+                  // `data:image/jpeg;base64,${games.images[0].data.toString()}`
+                />
+                {console.log(games.images)}
+                <h4>{games.name}</h4>
+                <h4>${games.cost}</h4>
+                {/* <Link to={`/product/${games.name}`}>
                 <button
                   type="submit"
                   onClick={() => {
@@ -64,10 +75,10 @@ function Store() {
                 </button>
               </Link> */}
 
-              <button type="submit">Buy Now</button>
-            </div>
-          );
-        })}
+                <button type="submit">Buy Now</button>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
