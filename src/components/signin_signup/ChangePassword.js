@@ -1,6 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 function ChangePassword() {
+  const [error, setError] = useState([]);
   const password = useRef(null);
   const confirm_password = useRef(null);
   const email = useRef(null);
@@ -29,12 +30,20 @@ function ChangePassword() {
       fetchUser = await fetchUser.json();
 
       fetchUser.status && alert(fetchUser.status);
+      if (fetchUser.error) {
+        setError(Object.values(fetchUser.error));
+      }
     };
     sendData();
   };
 
   return (
     <div className="big_container">
+      <center>
+        <div style={{ color: "red" }}>
+          {<div style={{ color: "red" }}>{error}</div>}
+        </div>
+      </center>
       <div className="container">
         <h1>Forget Pasword</h1>
         <form id="forgetpass">

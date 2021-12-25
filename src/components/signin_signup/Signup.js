@@ -64,9 +64,7 @@ function Signup() {
       {
         <center>
           <div style={{ color: "red" }}>
-            {error.map((items) => (
-              <p key={error.indexOf(items)}>{items}</p>
-            ))}
+            {<div style={{ color: "red" }}>{error}</div>}
           </div>
         </center>
       }
