@@ -1,20 +1,18 @@
 import React from "react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ForgetPass() {
-  const [status, setStatus] = useState(false);
   const navigate = useNavigate();
 
   const textInput = useRef(null);
   const handleClick = (e) => {
     e.preventDefault();
-    const value = textInput.current.value;
+    const value = { email: textInput.current.value };
 
-    sendData();
     const sendData = async () => {
       let fetchUser = await fetch(
-        "https://game-distribution-web.herokuapp.com/fp=true",
+        "https://game-distribution-web.herokuapp.com/sign-in?fp=true",
         {
           method: "Post",
           headers: {
@@ -26,13 +24,11 @@ function ForgetPass() {
       );
 
       fetchUser = await fetchUser.json();
-      {
-        fetchUser.status &&
-          setStatus(true) &&
-          alert(fetchUser.status) &&
-          navigate("/change_pass");
-      }
+
+      fetchUser.status && alert(fetchUser.status);
+      fetchUser.status && navigate("/change_pass");
     };
+    sendData();
   };
 
   return (

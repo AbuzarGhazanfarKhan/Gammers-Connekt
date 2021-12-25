@@ -44,19 +44,19 @@ function Signin() {
       );
 
       fetchUser = await fetchUser.json();
-      console.log(fetchUser);
       if (fetchUser.error) {
-        alert(fetchUser.error);
+        setError(Object.values(fetchUser.error));
       }
+
       // cookies.set("token", fetchUser);
       // setCookie({ fetchUser });
       // console.log(cookies);
       // console.log(fetchUser.token);
       // const cookie_key = "token";
       // bake_cookie(cookie_key, `${fetchUser.token}`);
-      {
-        fetchUser.token && Cookies.set("token", `${fetchUser.token}`);
-      }
+
+      fetchUser.token && Cookies.set("token", `${fetchUser.token}`);
+
       Cookies.get("token");
       const handleRedirect = () => {
         if (fetchUser.token) {

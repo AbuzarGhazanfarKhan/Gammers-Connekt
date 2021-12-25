@@ -11,6 +11,7 @@ import Store from "./components/Screen/Store";
 // import Profile from "./components/Screen/Profile";
 import ProtectedRoutes from "./components/customHooks/ProtectedRoutes";
 import ForgetPass from "./components/signin_signup/ForgetPass";
+import ChangePassword from "./components/signin_signup/ChangePassword";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/product/:gamename" element={<ProductDetails />} />
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="/forget_password" element={<ForgetPass />} />
+          <Route path="/change_pass" element={<ChangePassword />} />
         </Routes>
         <Footer />
       </Router>

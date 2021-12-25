@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 function ChangePassword() {
   const password = useRef(null);
@@ -13,7 +13,6 @@ function ChangePassword() {
       email: email.current.value,
     };
 
-    sendData();
     const sendData = async () => {
       let fetchUser = await fetch(
         "https://game-distribution-web.herokuapp.com/sign-in",
@@ -28,11 +27,10 @@ function ChangePassword() {
       );
 
       fetchUser = await fetchUser.json();
-      {
-        fetchUser.status && alert(fetchUser.status);
-        navigate("/sign_in");
-      }
+
+      fetchUser.status && alert(fetchUser.status);
     };
+    sendData();
   };
 
   return (
@@ -41,16 +39,16 @@ function ChangePassword() {
         <h1>Forget Pasword</h1>
         <form id="forgetpass">
           <label htmlFor="password">Enter New Password</label>
-          <input type="text" name="password" id="password" ref={textInput} />
+          <input type="text" name="password" id="password" ref={password} />
           <label htmlFor="confirm_password">Confirm New Password</label>
           <input
             type="text"
             name="confirm_password"
             id="confirm_password"
-            ref={textInput}
+            ref={confirm_password}
           />
           <label htmlFor="email">Enter the Email used for Registration</label>
-          <input type="text" name="email" id="email" ref={textInput} />
+          <input type="text" name="email" id="email" ref={email} />
           <button id="fpbutton" type="submit" onClick={handleClick}>
             Get New Password
           </button>
