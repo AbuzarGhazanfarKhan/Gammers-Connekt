@@ -7,6 +7,7 @@ function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [allActiveUser, setAllActiveUser] = useState([]);
+  const [error, setError] = useState([]);
 
   // const [cookies, setCookie] = useCookies({ token: null });
   // const cookies = new Cookies();
@@ -41,7 +42,9 @@ function Signin() {
           body: JSON.stringify(newEntry),
         }
       );
+
       fetchUser = await fetchUser.json();
+      console.log(fetchUser);
       if (fetchUser.error) {
         alert(fetchUser.error);
       }
@@ -51,11 +54,15 @@ function Signin() {
       // console.log(fetchUser.token);
       // const cookie_key = "token";
       // bake_cookie(cookie_key, `${fetchUser.token}`);
-      Cookies.set("token", `${fetchUser.token}`);
+      {
+        fetchUser.token && Cookies.set("token", `${fetchUser.token}`);
+      }
       Cookies.get("token");
       const handleRedirect = () => {
-        fetchUser.token && navigate("/");
-        window.location.reload();
+        if (fetchUser.token) {
+          fetchUser.token && navigate("/");
+          window.location.reload();
+        }
       };
       handleRedirect();
     }
@@ -64,6 +71,15 @@ function Signin() {
   return (
     <>
       <div className="big_container">
+        {
+          <center>
+            <div style={{ color: "red" }}>
+              {error.map((items) => (
+                <p key={error.indexOf(items)}>{items}</p>
+              ))}
+            </div>
+          </center>
+        }
         <div className="container">
           <h1>Login</h1>
           <form action="" id="signin" onSubmit={submitForm}>
@@ -91,6 +107,10 @@ function Signin() {
             <p>
               Don't Have An Acount?{" "}
               <NavLink to="/sign_up">Sign Up For Free</NavLink>
+            </p>
+            <p>
+              {" "}
+              <NavLink to="/forget_password?fp=true">Forget password?</NavLink>
             </p>
           </form>
         </div>

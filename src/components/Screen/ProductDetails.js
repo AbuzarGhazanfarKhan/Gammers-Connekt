@@ -11,7 +11,12 @@ function ProductDetails() {
   return (
     <div className="product_details">
       <div className="product_details_box">
-        {isPending && <div>Loading...</div>}
+        {isPending && (
+          <div>
+            {" "}
+            <h1> Loading... </h1>{" "}
+          </div>
+        )}
         {error && <div>{error}</div>}
         {/* {console.log(error)} */}
         {data && (

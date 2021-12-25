@@ -10,6 +10,7 @@ import Store from "./components/Screen/Store";
 // import Cookies from "js-cookie";
 // import Profile from "./components/Screen/Profile";
 import ProtectedRoutes from "./components/customHooks/ProtectedRoutes";
+import ForgetPass from "./components/signin_signup/ForgetPass";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
 
           <Route path="/product/:gamename" element={<ProductDetails />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/forget_password" element={<ForgetPass />} />
         </Routes>
         <Footer />
       </Router>

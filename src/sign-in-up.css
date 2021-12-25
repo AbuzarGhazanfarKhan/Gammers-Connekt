@@ -56,7 +56,8 @@ form label {
   border: none;
   border-bottom: 1px solid rgb(138, 111, 138);
 }
-#signin input {
+#signin input,
+#forgetpass input {
   color: white;
   font-size: 1.2em;
   width: 100%;
@@ -80,7 +81,8 @@ form p a:hover {
   color: white;
   border-radius: 5px;
 }
-form #sign_in {
+form #sign_in,
+form #fpbutton {
   margin-block: 20px;
   width: 100%;
   padding: 10px;
@@ -92,7 +94,8 @@ form #sign_in {
   cursor: pointer;
   border-radius: 5px;
 }
-form #sign_in:hover {
+form #sign_in:hover,
+form #fpbutton:hover {
   box-shadow: 5px 5px 10px rgb(23, 23, 39);
   background: linear-gradient(37deg, rgb(52, 52, 110) 8%, rgb(23, 23, 39) 98%);
 }
