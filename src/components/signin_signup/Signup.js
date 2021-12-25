@@ -81,11 +81,11 @@ function Signup() {
     <div className="big_container">
       {
         <center>
-          <p style={{ color: "red" }}>
+          <div style={{ color: "red" }}>
             {error.map((items) => (
-              <p>{items}</p>
+              <p key={error.indexOf(items)}>{items}</p>
             ))}
-          </p>
+          </div>
         </center>
       }
 
