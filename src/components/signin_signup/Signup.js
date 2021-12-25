@@ -24,7 +24,7 @@ function Signup() {
     e.preventDefault();
     const newUser = {
       ...userRegistration,
-      redirectlink: "https://compassionate-agnesi-be9563.netlify.app/sign_in",
+      redirect_url: "https://compassionate-agnesi-be9563.netlify.app/sign_in",
       // id: Math.floor(Math.random() * 10000 +
     };
 
