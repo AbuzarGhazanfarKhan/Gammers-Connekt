@@ -118,3 +118,10 @@ import {
         setProduct(data);
       });
   });
+
+
+
+   // setError(Object.keys(fetchUser.error).forEach((key) => {
+      //     fetchUser.error[key];
+      //   })
+      // );
