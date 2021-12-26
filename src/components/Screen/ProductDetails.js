@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useDetails from "../customHooks/useDetails";
+import Cookies from "js-cookie";
 
 function ProductDetails() {
   const [gameId, setGameId] = useState("");
@@ -12,6 +13,7 @@ function ProductDetails() {
   const { data, isPending, error } = useDetails(
     `https://game-distribution-web.herokuapp.com/get-games-filter-public?name=${gamename}`
   );
+  const token = Cookies.get("token");
 
   async function newRegistration() {
     let fetchUser = await fetch(
@@ -21,6 +23,7 @@ function ProductDetails() {
         headers: {
           "content-Type": "application/json",
           Accept: "application/json",
+          Authorization: "Bearer " + token,
         },
         body: JSON.stringify({
           success_url: "https://compassionate-agnesi-be9563.netlify.app/",
