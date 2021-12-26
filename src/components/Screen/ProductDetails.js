@@ -1,12 +1,45 @@
 import React from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useDetails from "../customHooks/useDetails";
 
 function ProductDetails() {
+  const [gameId, setGameId] = useState("");
   const { gamename } = useParams();
+  const [iderror, setIdError] = useState([]);
+  const [status, setStatus] = useState([]);
+
   const { data, isPending, error } = useDetails(
     `https://game-distribution-web.herokuapp.com/get-games-filter-public?name=${gamename}`
   );
+
+  async function newRegistration() {
+    let fetchUser = await fetch(
+      "https://game-distribution-web.herokuapp.com/sign-up",
+      {
+        method: "Post",
+        headers: {
+          "content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(gameId),
+      }
+    );
+    fetchUser = await fetchUser.json();
+    if (fetchUser.error) {
+      setIdError(Object.values(fetchUser.error));
+    }
+
+    if (fetchUser.status) {
+      setStatus(fetchUser.status);
+    }
+  }
+
+  let handleclick = () => {
+    setGameId(data.id);
+
+    newRegistration();
+  };
 
   return (
     <div className="product_details">
@@ -18,26 +51,63 @@ function ProductDetails() {
           </div>
         )}
         {error && <div>{error}</div>}
+
+        {
+          <center>
+            <div>
+              {<div style={{ BackgroundColor: "#FFBFB2" }}>{iderror}</div>}
+            </div>
+          </center>
+        }
+
+        {status ? (
+          <div>
+            <div style={{ backgroundColor: "#4BB543" }}>{status}</div>
+          </div>
+        ) : null}
+
         {/* {console.log(error)} */}
         {data && (
-          <div>
+          <div className="product_details">
             {/* {console.log(data)} */}
-            <h1>{data.name}</h1>
-            <h2>${data.cost}</h2>
-            <div className="product_images">
+            <h1 style={{ color: "rgb(138, 111, 138)", fontSize: "4rem" }}>
+              {data.name}
+            </h1>
+            <div className="product_main_details">
               <div className="Cover_picture">
                 <img
                   src={`data:image/jpeg;base64,${data.images[0]}`}
                   alt={data.name}
                 />
               </div>
-              <div className="sec1_picture">
+              <div className="product_info">
+                <div
+                  style={{
+                    display: "flex",
+                    background: "rgba(255, 255, 255, 0.318)",
+                    border: "2px solid #9f8cdb7a ",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <h1 style={{ margin: "2rem" }}> Name: {data.name}</h1>
+                  <h1 style={{ margin: "2rem" }}> Cost: ${data.cost}</h1>
+                </div>
+                <p> {data.description} </p>
+                <div>
+                  <button type="submit" onClick={handleclick}>
+                    Buy {data.name} Now
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="product_images">
+              <div className="sec_picture">
                 <img
                   src={`data:image/jpeg;base64,${data.images[1]}`}
                   alt={data.name}
                 />
               </div>
-              <div className="sec2_picture">
+              <div className="sec_picture">
                 <img
                   src={`data:image/jpeg;base64,${data.images[2]}`}
                   alt={data.name}
