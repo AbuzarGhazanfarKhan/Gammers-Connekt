@@ -17,7 +17,9 @@ function ProductDetails() {
 
   async function newRegistration() {
     let fetchUser = await fetch(
-      `https://game-distribution-web.herokuapp.com/checkout/${data.id}`,
+      `https://game-distribution-web.herokuapp.com/checkout/${parseInt(
+        data.id
+      )}`,
       {
         method: "Post",
         headers: {
