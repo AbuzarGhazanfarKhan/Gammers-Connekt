@@ -15,14 +15,17 @@ function ProductDetails() {
 
   async function newRegistration() {
     let fetchUser = await fetch(
-      "https://game-distribution-web.herokuapp.com/sign-up",
+      `https://game-distribution-web.herokuapp.com/checkout/${data.id}`,
       {
         method: "Post",
         headers: {
           "content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(gameId),
+        body: JSON.stringify({
+          success_url: "https://compassionate-agnesi-be9563.netlify.app/",
+          cancel_url: `https://compassionate-agnesi-be9563.netlify.app/product/${data.name}`,
+        }),
       }
     );
     fetchUser = await fetchUser.json();
@@ -36,8 +39,6 @@ function ProductDetails() {
   }
 
   let handleclick = () => {
-    setGameId(data.id);
-
     newRegistration();
   };
 
