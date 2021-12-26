@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { decode } from "base64-arraybuffer";
 
 function AdminPanel() {
   const [imageFile, setimageFile] = useState(null);
@@ -13,6 +12,8 @@ function AdminPanel() {
   const [category, setcategory] = useState(undefined);
   const [no_of_purchased, setno_of_purchased] = useState(undefined);
   const [keys, setkeys] = useState(undefined);
+  const [reserror, setResError] = useState([]);
+  const [status, setStatus] = useState([]);
 
   const types = ["image/png", "image/jpeg", "image/jpg"];
   const handleImages = (e) => {
@@ -49,14 +50,6 @@ function AdminPanel() {
       setError("Please select a valid format of image (png or jpg) ");
     }
   };
-  // const formData = new FormData();
-  // const converBase64 = (file) => {
-
-  //   return new Promise((resolve, reject) => {
-  //     const fileReader = new FileReader()
-  //     fileReader.readAsDataURL(file)
-  //   })
-  // };
 
   //POST PRODUCT
   const newEntry = {
@@ -75,25 +68,14 @@ function AdminPanel() {
   formdata.append("file", image[0]);
   formdata.append("file", image[1]);
   formdata.append("file", image[2]);
-  console.log(formdata.getAll("file"));
+  // console.log(formdata.getAll("file"));
   formdata.append("post", objectStringed);
-  console.log(formdata);
-  console.log(objectStringed);
-
-  // console.log(JSON.stringify(formdata.getAll("data")));
-
-  // console.log(newEntry);
-
-  // const verynewEntry = {
-  //   [newEntry]: newEntry,
-  // };
+  // console.log(formdata);
+  // console.log(objectStringed);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     sendData();
-
-    // console.log(objectStringed);
-    // console.log(newEntry);
   };
   async function sendData() {
     let result = await fetch(
@@ -101,14 +83,17 @@ function AdminPanel() {
 
       {
         method: "Post",
-        headers: {
-          // "Content-Type": "application/json",
-          //   // Accept: "multipart/form-data",
-        },
+        headers: {},
         body: formdata,
       }
     );
-    console.log(result);
+    let response = await result.json();
+    if (response.error) {
+      setResError(response.error);
+    }
+    if (response.status) {
+      setStatus(response.status);
+    }
   }
 
   return (
@@ -168,7 +153,7 @@ function AdminPanel() {
             onChange={handleImages2}
             name="other2_image"
           />
-          {console.log(imageFile)}
+          {/* {console.log(imageFile)} */}
           {error && <p style={{ color: "red" }}> {error} </p>}
           <input
             type="text"
@@ -211,6 +196,12 @@ function AdminPanel() {
           <button type="submit">Add Product</button>
         </form>
       </div>
+      {reserror && <div style={{ color: "red" }}>{reserror}</div>}
+      {status ? (
+        <div style={{ color: "green" }}>
+          <p>{status}</p>
+        </div>
+      ) : null}
     </div>
   );
 }
