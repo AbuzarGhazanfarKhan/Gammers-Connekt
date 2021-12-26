@@ -71,8 +71,8 @@ function Signin() {
   return (
     <>
       <div className="big_container">
-        {<div style={{ color: "red" }}>{error}</div>}
         <div className="container">
+          {<div style={{ color: "red" }}>{error}</div>}
           <h1>Login</h1>
           <form action="" id="signin" onSubmit={submitForm}>
             <label htmlFor="email">Email</label>
