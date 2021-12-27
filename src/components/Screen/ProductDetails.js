@@ -67,7 +67,13 @@ function ProductDetails() {
 
         {status ? (
           <div>
-            <div style={{ backgroundColor: "#4BB543" }}>{status}</div>
+            <div style={{ backgroundColor: "#4BB543" }}>
+              {" "}
+              <center>
+                {" "}
+                <h1> {status} </h1>{" "}
+              </center>{" "}
+            </div>
           </div>
         ) : null}
 
