@@ -32,7 +32,9 @@ function ProductDetails() {
       }
     );
     fetchUser = await fetchUser.json();
-    // window.location.href=fetchUser.url
+    if (fetchUser.url) {
+      return (window.location.href = fetchUser.url);
+    }
     console.log(fetchUser);
 
     if (fetchUser.error) {
