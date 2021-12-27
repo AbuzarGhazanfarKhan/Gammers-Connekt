@@ -474,5 +474,17 @@ input#file-upload-button {
   }
 }
 /* large screens */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .product_main_details {
+    flex-direction: column;
+  }
+  .product_main_details img {
+    width: 100%;
+  }
 }
