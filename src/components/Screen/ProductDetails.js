@@ -33,7 +33,7 @@ function ProductDetails() {
     );
     fetchUser = await fetchUser.json();
     if (fetchUser.url) {
-      return (window.location.href = fetchUser.url);
+      return (window.open = fetchUser.url);
     }
     console.log(fetchUser);
 
