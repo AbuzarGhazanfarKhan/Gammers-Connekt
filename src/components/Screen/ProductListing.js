@@ -38,6 +38,11 @@ function ProductListing() {
         </button>
       </div>
 
+      <center>
+        {" "}
+        <h1> {category} </h1>{" "}
+      </center>
+
       {/* <select>
         <option
           value={"RTS"}
