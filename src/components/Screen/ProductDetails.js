@@ -5,7 +5,7 @@ import useDetails from "../customHooks/useDetails";
 import Cookies from "js-cookie";
 
 function ProductDetails() {
-  const [gameId, setGameId] = useState("");
+  // const [gameId, setGameId] = useState("");
   const { gamename } = useParams();
   const [iderror, setIdError] = useState([]);
   const [status, setStatus] = useState([]);
@@ -17,9 +17,7 @@ function ProductDetails() {
 
   async function newRegistration() {
     let fetchUser = await fetch(
-      `https://game-distribution-web.herokuapp.com/checkout/${parseInt(
-        data.id
-      )}`,
+      `https://game-distribution-web.herokuapp.com/checkout/${data._id}`,
       {
         method: "Post",
         headers: {
@@ -44,6 +42,7 @@ function ProductDetails() {
   }
 
   let handleclick = () => {
+    console.log(data._id);
     newRegistration();
   };
 
