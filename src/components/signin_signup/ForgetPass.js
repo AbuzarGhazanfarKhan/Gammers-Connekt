@@ -27,6 +27,9 @@ function ForgetPass() {
 
       fetchUser.status && alert(fetchUser.status);
       //   fetchUser.status && navigate("/change_pass");
+      {
+        fetchUser.error ? alert(fetchUser.error.message) : "";
+      }
     };
     sendData();
   };
