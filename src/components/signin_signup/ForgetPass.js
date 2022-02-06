@@ -26,10 +26,8 @@ function ForgetPass() {
       fetchUser = await fetchUser.json();
 
       fetchUser.status && alert(fetchUser.status);
+      fetchUser.error && alert(fetchUser.error);
       //   fetchUser.status && navigate("/change_pass");
-      {
-        fetchUser.error ? alert(fetchUser.error.message) : "";
-      }
     };
     sendData();
   };
