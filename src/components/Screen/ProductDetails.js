@@ -32,6 +32,8 @@ function ProductDetails() {
       }
     );
     fetchUser = await fetchUser.json();
+    fetchUser.error &&
+      alert("You cannot Buy This Product Because " + fetchUser.error);
     if (fetchUser.url) {
       return (window.location.href = fetchUser.url);
     }
