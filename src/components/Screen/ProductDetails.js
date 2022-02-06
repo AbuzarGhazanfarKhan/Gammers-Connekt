@@ -37,7 +37,6 @@ function ProductDetails() {
     if (fetchUser.url) {
       return (window.location.href = fetchUser.url);
     }
-    console.log(fetchUser);
 
     if (fetchUser.error) {
       setIdError(Object.values(fetchUser.error));
@@ -49,7 +48,6 @@ function ProductDetails() {
   }
 
   let handleclick = () => {
-    console.log(data._id);
     newRegistration();
   };
 
@@ -84,10 +82,8 @@ function ProductDetails() {
           </div>
         ) : null}
 
-        {/* {console.log(error)} */}
         {data && (
           <div className="product_details">
-            {/* {console.log(data)} */}
             <h1 style={{ color: "rgb(138, 111, 138)", fontSize: "4rem" }}>
               {data.name}
             </h1>

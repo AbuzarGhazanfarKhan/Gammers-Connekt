@@ -9,8 +9,6 @@ function ProductListing() {
   const [category, setcategory] = useState("");
 
   const handleChange = (e) => {
-    // console.log(e.target.value);
-    console.log(category);
     setcategory(e.target.value);
   };
   const {
